@@ -7,4 +7,6 @@
     <string name="address">address</string>
     <string name="name">name</string>
     <string name="time">time</string>
+    <string name="_cost">Cost</string>
+    <string name="search">Поиск заправки</string>
 </resources>

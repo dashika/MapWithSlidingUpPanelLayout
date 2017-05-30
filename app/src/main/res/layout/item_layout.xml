@@ -2,20 +2,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/element_bottom_panel"
+    android:background="@color/item_background"
     android:orientation="horizontal">
 
     <LinearLayout
+        android:layout_margin="2pt"
+        android:gravity="center"
         android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
 
         <TextView
+            android:textSize="@dimen/title_text"
+            android:textColor="@color/cost_color"
             android:id="@+id/twCost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/cost" />
+            android:hint="@string/_cost" />
 
         <TextView
+            android:textSize="@dimen/small"
             android:id="@+id/twTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,22 +31,34 @@
     </LinearLayout>
 
     <ImageView
+        android:layout_margin="2pt"
         android:id="@+id/imgLogo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher" />
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/gas_prom"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_toEndOf="@+id/linearLayout" />
 
     <LinearLayout
-        android:layout_width="150dp"
-        android:layout_height="wrap_content">
+        android:layout_margin="2pt"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_toLeftOf="@+id/linearLayout1"
+        android:layout_toRightOf="@id/imgLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
         <TextView
+            android:textSize="@dimen/title_text"
+            android:textColor="@color/title_color"
             android:id="@+id/twName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/name" />
 
         <TextView
+            android:textSize="@dimen/medium"
             android:id="@+id/twAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,19 +67,32 @@
     </LinearLayout>
 
     <LinearLayout
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="2pt"
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="@drawable/rectangle_direction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@mipmap/ic_launcher" />
-
-        <TextView
+            android:layout_margin="2pt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/distance" />
+            android:src="@drawable/location_arror" />
+
+        <TextView
+            android:textSize="@dimen/medium"
+            android:textColor="@color/title_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="0" />
 
     </LinearLayout>
-
+    </LinearLayout>
 </RelativeLayout>

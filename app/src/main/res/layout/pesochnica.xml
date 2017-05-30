@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:background="@android:color/transparent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_panel">
+
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ellipse_bottom_panel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_toStartOf="@+id/view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <Button
+                android:textColor="@android:color/white"
+                android:background="@drawable/rectangle"
+                android:text="@string/distance"
+                android:id="@+id/btnDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_below="@id/btnDistance"
+                android:src="@drawable/triangle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_centerHorizontal="true"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:id="@+id/view" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <Button
+                android:textColor="@android:color/white"
+                android:background="@drawable/rectangle"
+                android:text="@string/cost"
+                android:id="@+id/btnCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+                <ImageView
+                    android:visibility="gone"
+                    android:layout_below="@id/btnDistance"
+                    android:src="@drawable/triangle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

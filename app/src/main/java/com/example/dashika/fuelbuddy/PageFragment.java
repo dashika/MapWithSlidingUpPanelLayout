@@ -64,9 +64,9 @@ public class PageFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = null;
 
+        view = inflater.inflate(R.layout.list, null);
         switch (pageNumber) {
             case 0: {
-                view = inflater.inflate(R.layout.distance_list, null);
                 Collections.sort(elements, new Comparator<Element>() {
                     @Override
                     public int compare(Element lhs, Element rhs) {
@@ -76,7 +76,6 @@ public class PageFragment extends Fragment {
                 break;
             }
             case 1: {
-                view = inflater.inflate(R.layout.cost_list, null);
                 Collections.sort(elements, new Comparator<Element>() {
                     @Override
                     public int compare(Element lhs, Element rhs) {

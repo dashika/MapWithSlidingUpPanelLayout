@@ -1,13 +1,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/transparent"
     android:layout_alignParentStart="true"
     android:layout_alignParentTop="true">
 
-    <include layout="@layout/toolbar"/>
-
-    <include layout="@layout/search_panel" />
-
     <include layout="@layout/bottom_panel" />
+
+    <include
+        android:id="@+id/toolbar_activity"
+        layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_below="@+id/toolbar_activity"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <include layout="@layout/search_panel" />
+    </LinearLayout>
 
 </RelativeLayout>
