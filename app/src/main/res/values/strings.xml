@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Fuel Buddy</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="moscow">Moscow</string>
+    <string name="distance">По расстоянию</string>
+    <string name="cost">По стоимости</string>
+    <string name="address">address</string>
+    <string name="name">name</string>
+    <string name="time">time</string>
+</resources>

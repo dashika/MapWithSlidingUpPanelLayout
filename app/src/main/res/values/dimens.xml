@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="img_icon">30dp</dimen>
+    <dimen name="bottom_panel">300dp</dimen>
+    <dimen name="element_bottom_panel">75dp</dimen>
+</resources>
