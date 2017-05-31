@@ -1,0 +1,101 @@
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sliding_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000"
+    android:gravity="bottom"
+    sothree:umanoOverlay="true"
+    sothree:umanoPanelHeight="140dp"
+    sothree:umanoShadowHeight="0dp">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.dashika.fuelbuddy.MapsActivity" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_panel"
+        android:background="@android:color/transparent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ellipse_bottom_panel" />
+
+        <RelativeLayout
+            android:background="@color/item_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_toStartOf="@+id/view"
+                android:layout_alignParentStart="true">
+
+                <Button
+                    android:id="@+id/btnDistance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle"
+                    android:text="@string/distance"
+                    android:textColor="@android:color/white" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btnDistance"
+                    android:src="@drawable/triangle" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/view"
+                android:layout_alignParentEnd="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnCost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle"
+                    android:text="@string/cost"
+                    android:textColor="@android:color/darker_gray" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btnDistance"
+                    android:src="@drawable/triangle"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/tabPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></android.support.v4.view.ViewPager>
+
+    </LinearLayout>
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="img_icon">30dp</dimen>
+    <dimen name="bottom_panel">350dp</dimen>
+    <dimen name="element_bottom_panel">75dp</dimen>
+    <dimen name="title_text">16sp</dimen>
+    <dimen name="medium">14sp</dimen>
+    <dimen name="small">10sp</dimen>
+    <dimen name="margin">2pt</dimen>
+    <dimen name="duble_margin">8dp</dimen>
+</resources>
