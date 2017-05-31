@@ -7,4 +7,6 @@
     <color name="title_color">#4c93b0</color>
     <color name="item_background">#f9f8f4</color>
     <color name="transparent">#00000000</color>
+    <color name="grey">#e1dac5</color>
+    <color name="white">#ffffff</color>
 </resources>

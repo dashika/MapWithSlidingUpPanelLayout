@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -25,6 +26,9 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Collections;
+import java.util.Comparator;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -38,6 +42,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     ImageButton btnPlus;
     @BindView(R.id.tabPage)
     ViewPager tabPage;
+    @BindView(R.id.btnDistance)
+    Button btnDistance;
+    @BindView(R.id.btnCost)
+    Button btnCost;
+    @BindView(R.id.imgTriangleDistance)
+    ImageView imgTriangleDistance;
+    @BindView(R.id.imgTriangleCost)
+    ImageView imgTriangleCost;
 
     MyFragmentPagerAdapter pagerAdapter;
 
@@ -56,12 +68,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         public int getCount() {
             return PAGE_COUNT;
         }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return "Title " + position;
-        }
-
     }
 
     @Override
@@ -82,12 +88,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0: {
+                        btnCost.setTextColor(getResources().getColor(R.color.grey));
+                        btnDistance.setTextColor(getResources().getColor(R.color.white));
+                        imgTriangleDistance.setVisibility(View.VISIBLE);
+                        imgTriangleCost.setVisibility(View.GONE);
+                        Collections.sort(AppFuelBuddy.getElements(), new Comparator<Element>() {
+                            @Override
+                            public int compare(Element lhs, Element rhs) {
+                                return lhs.getDistance() < rhs.getDistance() ? -1 : (lhs.getDistance() > rhs.getDistance()) ? 1 : 0;
+                            }
+                        });
                         break;
                     }
                     case 1: {
+                        btnCost.setTextColor(getResources().getColor(R.color.white));
+                        btnDistance.setTextColor(getResources().getColor(R.color.grey));
+                        imgTriangleDistance.setVisibility(View.GONE);
+                        imgTriangleCost.setVisibility(View.VISIBLE);
+                        Collections.sort(AppFuelBuddy.getElements(), new Comparator<Element>() {
+                            @Override
+                            public int compare(Element lhs, Element rhs) {
+                                return lhs.getCoast() < rhs.getCoast() ? -1 : (lhs.getCoast() > rhs.getCoast()) ? 1 : 0;
+                            }
+                        });
                         break;
                     }
                 }
+                PageFragment.change();
+                pagerAdapter.notifyDataSetChanged();
             }
 
             @Override

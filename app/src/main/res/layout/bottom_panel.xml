@@ -53,6 +53,7 @@
                     android:textColor="@android:color/white" />
 
                 <ImageView
+                    android:id="@+id/imgTriangleDistance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/btnDistance"
@@ -83,6 +84,8 @@
                     android:textColor="@android:color/darker_gray" />
 
                 <ImageView
+
+                    android:id="@+id/imgTriangleCost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/btnDistance"

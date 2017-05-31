@@ -23,7 +23,8 @@ public class PageFragment extends Fragment {
 
     static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
     int pageNumber;
-
+    static ItemAdapter itemAdapter;
+    List<Element> elements;
 
 
     public static PageFragment newInstance(int page) {
@@ -38,39 +39,21 @@ public class PageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         pageNumber = getArguments().getInt(ARGUMENT_PAGE_NUMBER);
+    }
 
-
+    public static void change() {
+        if (itemAdapter != null)
+            itemAdapter.notifyDataSetChanged();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = null;
-
-        view = inflater.inflate(R.layout.list, null);
-        switch (pageNumber) {
-            case 0: {
-                Collections.sort(AppFuelBuddy.getElements(), new Comparator<Element>() {
-                    @Override
-                    public int compare(Element lhs, Element rhs) {
-                        return lhs.getDistance() > rhs.getDistance() ? -1 : (lhs.getDistance() < rhs.getDistance()) ? 1 : 0;
-                    }
-                });
-                break;
-            }
-            case 1: {
-                Collections.sort(AppFuelBuddy.getElements(), new Comparator<Element>() {
-                    @Override
-                    public int compare(Element lhs, Element rhs) {
-                        return lhs.getCoast() > rhs.getCoast() ? -1 : (lhs.getCoast() < rhs.getCoast()) ? 1 : 0;
-                    }
-                });
-                break;
-            }
-        }
+        View view = inflater.inflate(R.layout.list, null);
+        elements = AppFuelBuddy.getElements();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ItemAdapter itemAdapter = new ItemAdapter(AppFuelBuddy.getElements(), getActivity());
+        itemAdapter = new ItemAdapter(elements, getActivity());
         recyclerView.setAdapter(itemAdapter);
         return view;
     }
