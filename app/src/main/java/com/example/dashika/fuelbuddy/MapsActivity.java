@@ -1,9 +1,9 @@
 package com.example.dashika.fuelbuddy;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -24,9 +24,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polygon;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +40,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     ViewPager tabPage;
 
     MyFragmentPagerAdapter pagerAdapter;
+
     private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
         public MyFragmentPagerAdapter(FragmentManager fm) {
@@ -109,28 +107,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        LatLng Moscow = Constant.latLngMoscowCenter;
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Moscow));
-        mMap.setInfoWindowAdapter(new InfoWindowAdapterMarker(this));
+        final LatLng Moscow = Constant.latLngMoscowCenter;
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Moscow, 12.0f));
+
+        mMap.setInfoWindowAdapter(new InfoWindowAdapterMarker());
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-                if(containMoscow(latLng))
-                {
-                    Toast.makeText(getBaseContext(),"Contain",Toast.LENGTH_LONG).show();
+                if (containMoscow(latLng)) {
+                    Marker marker = mMap.addMarker(new MarkerOptions()
+                            .position(latLng)
+                            .title(AppFuelBuddy.getElements().get(0).getAddress())
+                            .snippet(AppFuelBuddy.getElements().get(0).getCoast() + " \u20BD")
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.transparent)));
+
+                    marker.showInfoWindow();
                 }
             }
         });
 
-      Marker marker =  mMap.addMarker(new MarkerOptions()
-                .position(Moscow)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.transparent)));
-
-                marker.showInfoWindow();
     }
 
-    private boolean containMoscow(LatLng latLng)
-    {
+    private boolean containMoscow(LatLng latLng) {
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         builder.include(Constant.latLngMoscowNortheast);
         builder.include(Constant.latLngMoscowSouthwest);
@@ -141,20 +139,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public class InfoWindowAdapterMarker implements GoogleMap.InfoWindowAdapter {
 
-        private Marker markerShowingInfoWindow;
-        private Context mContext;
-        public InfoWindowAdapterMarker(Context context) {
-            mContext = context;
-        }
+        private View popUp;
 
         @Override
-        public View getInfoContents(Marker marker) {
-
-            markerShowingInfoWindow = marker;
-
-            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
-            View popUp = inflater.inflate(R.layout.layout_popup, null);
-
+        public View getInfoWindow(Marker marker) {
+            popUp = getLayoutInflater().inflate(R.layout.layout_popup, null);
+            popUp.setBackgroundColor(getResources().getColor(R.color.transparent));
             TextView twAddress = (TextView) popUp.findViewById(R.id.twAddress);
             TextView twCost = (TextView) popUp.findViewById(R.id.twCost);
             ImageView imgLogo = (ImageView) popUp.findViewById(R.id.imgLogo);
@@ -166,10 +156,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         @Override
-        public View getInfoWindow(Marker marker) {
-
-            return null;
+        public View getInfoContents(Marker marker) {
+            return popUp;
         }
+
 
     }
 

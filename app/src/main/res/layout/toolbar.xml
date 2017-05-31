@@ -1,6 +1,6 @@
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@drawable/title_background"
+    android:layout_margin="@dimen/margin"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 <ImageView

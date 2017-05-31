@@ -1,64 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:background="#60c369"
-    android:layout_height="wrap_content">
 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:layout_height="70dp">
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="#60c369">
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="50dp"
+            android:scaleType="center"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/white"
+            android:src="@drawable/shell" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            android:layout_toEndOf="@id/imgLogo"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/twAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/address"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/twCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/cost"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnDirection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/margin"
+            android:background="@android:color/transparent"
+            android:src="@drawable/direction" />
+
+        <ImageButton
+            android:id="@+id/btnLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/margin"
+            android:layout_toStartOf="@id/btnDirection"
+            android:background="@android:color/transparent"
+            android:src="@drawable/like" />
+
+    </RelativeLayout>
 
     <ImageView
-        android:background="@android:color/white"
-        android:src="@drawable/shell"
-        android:id="@+id/imgLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        />
-
-    <LinearLayout
-        android:layout_toEndOf="@id/imgLogo"
-        android:layout_margin="@dimen/margin"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2">
-
-        <TextView
-            android:textColor="@android:color/white"
-            android:hint="@string/address"
-            android:id="@+id/twAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:textColor="@android:color/white"
-            android:hint="@string/cost"
-            android:id="@+id/twCost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-
-
-    <ImageButton
-        android:layout_alignParentEnd="true"
-        android:layout_margin="@dimen/margin"
-        android:layout_gravity="center"
-        android:src="@drawable/direction"
-        android:background="@android:color/transparent"
-        android:id="@+id/btnDirection"
+        android:layout_marginStart="60dp"
+        android:backgroundTint="@color/colorAccent"
+        android:background="@drawable/triangle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
-    <ImageButton
-        android:layout_toStartOf="@id/btnDirection"
-        android:layout_margin="@dimen/margin"
-        android:layout_gravity="center"
-        android:src="@drawable/like"
-        android:background="@android:color/transparent"
-        android:id="@+id/btnLike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-</RelativeLayout>
+</LinearLayout>

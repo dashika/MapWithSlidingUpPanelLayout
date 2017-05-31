@@ -24,7 +24,7 @@ public class PageFragment extends Fragment {
     static final String ARGUMENT_PAGE_NUMBER = "arg_page_number";
     int pageNumber;
 
-    List<Element> elements = new ArrayList<>();
+
 
     public static PageFragment newInstance(int page) {
         PageFragment pageFragment = new PageFragment();
@@ -39,24 +39,7 @@ public class PageFragment extends Fragment {
         super.onCreate(savedInstanceState);
         pageNumber = getArguments().getInt(ARGUMENT_PAGE_NUMBER);
 
-        elements = Arrays.asList(
-                new Element(
-                        35.5f, new Date().getTime(), "default",
-                        "Автозаправка Shell", "ул.Садовническая, 57",
-                        0.3f, Constant.latLngMoscowCenter),
-                new Element(
-                        35.5f, new Date().getTime(), "default",
-                        "Газпром", "ул.Карла-Маркса,112",
-                        1.3f, Constant.latLngMoscowCenter),
-                new Element(
-                        35.5f, new Date().getTime(), "default",
-                        "Газпром", "ул.Первомайская,33",
-                        5.3f, Constant.latLngMoscowCenter),
-                new Element(
-                        35.5f, new Date().getTime(), "default",
-                        "Газпром", "Шоссу энтузиастов,51",
-                        12f, Constant.latLngMoscowCenter)
-        );
+
     }
 
     @Override
@@ -67,7 +50,7 @@ public class PageFragment extends Fragment {
         view = inflater.inflate(R.layout.list, null);
         switch (pageNumber) {
             case 0: {
-                Collections.sort(elements, new Comparator<Element>() {
+                Collections.sort(AppFuelBuddy.getElements(), new Comparator<Element>() {
                     @Override
                     public int compare(Element lhs, Element rhs) {
                         return lhs.getDistance() > rhs.getDistance() ? -1 : (lhs.getDistance() < rhs.getDistance()) ? 1 : 0;
@@ -76,7 +59,7 @@ public class PageFragment extends Fragment {
                 break;
             }
             case 1: {
-                Collections.sort(elements, new Comparator<Element>() {
+                Collections.sort(AppFuelBuddy.getElements(), new Comparator<Element>() {
                     @Override
                     public int compare(Element lhs, Element rhs) {
                         return lhs.getCoast() > rhs.getCoast() ? -1 : (lhs.getCoast() < rhs.getCoast()) ? 1 : 0;
@@ -87,7 +70,7 @@ public class PageFragment extends Fragment {
         }
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ItemAdapter itemAdapter = new ItemAdapter(elements, getActivity());
+        ItemAdapter itemAdapter = new ItemAdapter(AppFuelBuddy.getElements(), getActivity());
         recyclerView.setAdapter(itemAdapter);
         return view;
     }
